@@ -54,6 +54,7 @@ ol {
   margin-left: 10%;
   margin-top: 10%;
   background-color: #B3DDFF;
+  opacity: 0.6;
 }
 
 #bmo .body .face .eye {
@@ -107,8 +108,10 @@ ol {
   top: 0;
   width: 60%;
   height: 7%;
-  background-color: #111;
-  border-radius: 0.4em;
+  background-color: #20426a;
+  border-bottom-right-radius: 0.4em;
+  border-bottom-left-radius: 0.4em;
+  box-shadow: -2px -3px 0px #1a3454;
 }
 
 #bmo .body .belly .ejector {
@@ -118,7 +121,7 @@ ol {
   top: 0;
   width: 6%;
   height: 7%;
-  background-color: #111;
+  background-color: #1a3454;
   border-radius: 100%;
 }
 
@@ -134,47 +137,35 @@ ol {
 
 #bmo .body .belly .d-pads .d-pad {
   position: absolute;
-  width: 40%;
-  height: 40%;
-  background-color: #FFF;
-}
-
-#bmo .body .belly .d-pads .d-pad i {
-  position: absolute;
-  height: 0;
-  width: 0;
-  margin-left: -12.5%;
-  margin-top: -12.5%;
-}
-
-#bmo .body .belly .d-pads .d-pad.center {
-  top: 30%;
+  width: 45%;
+  height: 45%;
+  background-color: #F1E030;
 }
 
 #bmo .body .belly .d-pads .d-pad.top {
   top: 0;
-  left: 30%;
-}
-
-#bmo .body .belly .d-pads .d-pad.top i {
-  top: 45%;
-  left: 50%;
-  border-left: 0.4em solid transparent;
-  border-right: 0.4em solid transparent;
-  border-bottom: 0.5em solid #111;
+  left: 25%;
+  border-top-left-radius: 0.2em;
+  border-top-right-radius: 0.2em;
 }
 
 #bmo .body .belly .d-pads .d-pad.right {
-  top: 30%;
-  left: 60%;
+  top: 25%;
+  left: 50%;
+  border-top-right-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
 }
 
 #bmo .body .belly .d-pads .d-pad.bottom {
-  top: 60%;
-  left: 30%;
+  top: 50%;
+  left: 25%;
+  border-bottom-left-radius: 0.2em;
+  border-bottom-right-radius: 0.2em;
 }
 
 #bmo .body .belly .d-pads .d-pad.left {
-  top: 30%;
+  top: 25%;
   left: 0;
+  border-top-left-radius: 0.2em;
+  border-bottom-left-radius: 0.2em;
 }
