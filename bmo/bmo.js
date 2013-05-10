@@ -1,3 +1,7 @@
+function makeVector(x,y) {
+  return new Two.Vector(x,y);
+}
+
 function makeBody(two) {
   var bodyTopLeft = new Two.Vector(5,5),
       bodyBottomLeft = new Two.Vector(5,595),
@@ -8,6 +12,59 @@ function makeBody(two) {
   body.fill = "#336699";
   body.stroke = "#111111";
   body.linewidth = 4;
+}
+
+function makeFace(two) {
+  var x = 30,
+      y = 30,
+      xz = 390,
+      yz = 220,
+      points = [];
+
+  points.push(makeVector(x, y));
+  points.push(makeVector(x + xz, y));
+  points.push(makeVector(x + xz, y + yz));
+  points.push(makeVector(x, y + yz));
+  points.push(makeVector(x, y));
+
+  var face = two.makePolygon(points);
+  face.fill = "#FFFFFF";
+  face.linewidth = 4;
+
+  makeLeftEye(two);
+  makeRightEye(two);
+  makeMouth(two);
+}
+
+function makeLeftEye(two) {
+  var x = 120,
+      y = 125,
+      z = 12;
+
+  var leftEye = two.makeCircle(x, y, z);
+  leftEye.fill = "#111111";
+}
+
+function makeRightEye(two) {
+  var x = 330,
+      y = 125,
+      z = 12;
+
+  var leftEye = two.makeCircle(x, y, z);
+  leftEye.fill = "#111111";
+}
+
+function makeMouth(two) {
+  var x = 180,
+      y = 190,
+      z = 80,
+      points = [];
+
+  points.push(makeVector(x, y))
+  points.push(makeVector(x + z, y))
+
+  var mouth = two.makePolygon(points);
+  mouth.linewidth = 4;
 }
 
 function makeDpad(two) {
@@ -30,9 +87,10 @@ function makeDpad(two) {
   points.push(new Two.Vector(x - z, y + z))
   points.push(new Two.Vector(x, y + z))
 
-  dpad = two.makePolygon(points, false)
+  var dpad = two.makePolygon(points);
   dpad.fill = "#FFD629";
   dpad.stroke = "#111111";
+  dpad.linewidth = 4;
 }
 
 (function() {
@@ -41,6 +99,7 @@ function makeDpad(two) {
       two = new Two(params).appendTo(bmo);
 
   makeBody(two);
+  makeFace(two);
   makeDpad(two);
   two.update();
 
