@@ -98,7 +98,6 @@ function makeDpad(two) {
       z = 40,
       points = []
 
-  points.push(new Two.Vector(x, y + z))
   points.push(new Two.Vector(x, y))
   points.push(new Two.Vector(x + z, y))
   points.push(new Two.Vector(x + z, y + z))
@@ -111,8 +110,9 @@ function makeDpad(two) {
   points.push(new Two.Vector(x - z, y + 2 * z))
   points.push(new Two.Vector(x - z, y + z))
   points.push(new Two.Vector(x, y + z))
+  points.push(new Two.Vector(x, y))
 
-  var dpad = two.makePolygon(points);
+  var dpad = two.makePolygon(points, true);
   dpad.fill = "#FFD629";
   dpad.stroke = "#111111";
   dpad.linewidth = 4;
@@ -120,29 +120,59 @@ function makeDpad(two) {
   return dpad;
 }
 
-function animateMouth(two, mouthBottom) {
+function makeDpadShadow(two) {
+  var x = 80,
+      y = 360,
+      z = 40,
+      points = [];
+
+  points.push(new Two.Vector(x, y))
+  points.push(new Two.Vector(x + 0.25 * z, y - 0.25 * z))
+  points.push(new Two.Vector(x + 1.25 * z, y - 0.25 * z))
+  points.push(new Two.Vector(x + 1.25 * z, y + 0.75 * z))
+  points.push(new Two.Vector(x + 2.25 * z, y + 0.75 * z))
+  points.push(new Two.Vector(x + 2.25 * z, y + 1.75 * z))
+  points.push(new Two.Vector(x + 2 * z, y + 2 * z))
+
+  var dpadShadow = two.makePolygon(points, true);
+  dpadShadow.fill = "#c6a624";
+  dpadShadow.stroke = "#111111";
+  dpadShadow.linewidth = 4;
+
+  points.length = 0;
+  points.push(new Two.Vector(x + z, y + 3 * z))
+  points.push(new Two.Vector(x + 1.25 * z, y + 2.75 * z))
+  points.push(new Two.Vector(x + 1.25 * z, y + 2 * z))
+  points.push(new Two.Vector(x + 1 * z, y + 2 * z))
+
+  var dpadShadow = two.makePolygon(points, true);
+  dpadShadow.fill = "#c6a624";
+  dpadShadow.stroke = "#111111";
+  dpadShadow.linewidth = 4;
+}
+
+function animateMouthBottom(two, mouthBottom) {
   two.bind('update', function(frameRate, fps) {
-    if(frameRate % 15 == 0) {
+    if(frameRate % 10 == 0) {
       mouthBottom.scale = 1 + Math.random() * 0.1;
     }
   }).play();
-
 }
 
 (function() {
-  var bmo = $('#bmo').get(0),
+  var element = $('#bmo').get(0),
       params = { width: 450, height: 600 },
-      two = new Two(params).appendTo(bmo),
+      two = new Two(params).appendTo(element),
       body = makeBody(two),
       face = makeFace(two),
       leftEye = makeLeftEye(two),
       rightEye = makeRightEye(two),
       mouthTop = makeMouthTop(two),
       mouthBottom = makeMouthBottom(two),
-      mouth = two.makeGroup(mouthTop, mouthBottom);
+      dpadShadow = makeDpadShadow(two),
       dpad = makeDpad(two);
 
-  animateMouth(two, mouthBottom);
+  animateMouthBottom(two, mouthBottom);
 
   two.update();
 })();
