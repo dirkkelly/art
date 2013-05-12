@@ -12,6 +12,8 @@ function makeBody(two) {
   body.fill = "#336699";
   body.stroke = "#111111";
   body.linewidth = 4;
+
+  return body;
 }
 
 function makeFace(two) {
@@ -28,12 +30,10 @@ function makeFace(two) {
   points.push(makeVector(x, y));
 
   var face = two.makePolygon(points);
-  face.fill = "#FFFFFF";
+  face.fill = "#cbd5ef";
   face.linewidth = 4;
 
-  makeLeftEye(two);
-  makeRightEye(two);
-  makeMouth(two);
+  return face;
 }
 
 function makeLeftEye(two) {
@@ -43,6 +43,8 @@ function makeLeftEye(two) {
 
   var leftEye = two.makeCircle(x, y, z);
   leftEye.fill = "#111111";
+
+  return leftEye;
 }
 
 function makeRightEye(two) {
@@ -50,21 +52,44 @@ function makeRightEye(two) {
       y = 125,
       z = 12;
 
-  var leftEye = two.makeCircle(x, y, z);
-  leftEye.fill = "#111111";
+  var rightEye = two.makeCircle(x, y, z);
+  rightEye.fill = "#111111";
+
+  return rightEye;
 }
 
-function makeMouth(two) {
+function makeMouthTop(two) {
   var x = 180,
       y = 190,
-      z = 80,
+      xz = 80,
+      yz = 10,
       points = [];
 
   points.push(makeVector(x, y))
-  points.push(makeVector(x + z, y))
+  points.push(makeVector(x + xz, y))
 
-  var mouth = two.makePolygon(points);
-  mouth.linewidth = 4;
+  var mouthTop = two.makePolygon(points);
+  mouthTop.linewidth = 8;
+
+  return mouthTop;
+}
+
+function makeMouthBottom(two) {
+  var x = 180,
+      y = 190,
+      xz = 80,
+      yz = 15,
+      points = [];
+
+  points.push(makeVector(x, y));
+  points.push(makeVector(x, y + yz));
+  points.push(makeVector(x + xz, y + yz));
+  points.push(makeVector(x + xz, y));
+
+  var mouthBottom = two.makePolygon(points);
+  mouthBottom.linewidth = 4;
+
+  return mouthBottom;
 }
 
 function makeDpad(two) {
@@ -91,16 +116,21 @@ function makeDpad(two) {
   dpad.fill = "#FFD629";
   dpad.stroke = "#111111";
   dpad.linewidth = 4;
+
+  return dpad;
 }
 
 (function() {
   var bmo = $('#bmo').get(0),
       params = { width: 450, height: 600 },
-      two = new Two(params).appendTo(bmo);
+      two = new Two(params).appendTo(bmo),
+      body = makeBody(two),
+      face = makeFace(two),
+      leftEye = makeLeftEye(two),
+      rightEye = makeRightEye(two),
+      mouthTop = makeMouthTop(two),
+      mouthBottom = makeMouthBottom(two),
+      dpad = makeDpad(two);
 
-  makeBody(two);
-  makeFace(two);
-  makeDpad(two);
   two.update();
-
 })();
