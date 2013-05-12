@@ -69,7 +69,7 @@ function makeMouthTop(two) {
   points.push(makeVector(x + xz, y))
 
   var mouthTop = two.makePolygon(points);
-  mouthTop.linewidth = 8;
+  mouthTop.linewidth = 4;
 
   return mouthTop;
 }
@@ -120,6 +120,15 @@ function makeDpad(two) {
   return dpad;
 }
 
+function animateMouth(two, mouthBottom) {
+  two.bind('update', function(frameRate, fps) {
+    if(frameRate % 15 == 0) {
+      mouthBottom.scale = 1 + Math.random() * 0.1;
+    }
+  }).play();
+
+}
+
 (function() {
   var bmo = $('#bmo').get(0),
       params = { width: 450, height: 600 },
@@ -130,7 +139,10 @@ function makeDpad(two) {
       rightEye = makeRightEye(two),
       mouthTop = makeMouthTop(two),
       mouthBottom = makeMouthBottom(two),
+      mouth = two.makeGroup(mouthTop, mouthBottom);
       dpad = makeDpad(two);
+
+  animateMouth(two, mouthBottom);
 
   two.update();
 })();
