@@ -129,7 +129,13 @@ function makeDpadShadow(two) {
   points.push(new Two.Vector(x, y))
   points.push(new Two.Vector(x + 0.25 * z, y - 0.25 * z))
   points.push(new Two.Vector(x + 1.25 * z, y - 0.25 * z))
+  points.push(new Two.Vector(x + 0.25 * z, y + 0.75 * z))
+  points.push(new Two.Vector(x + 1.25 * z, y - 0.25 * z))
   points.push(new Two.Vector(x + 1.25 * z, y + 0.75 * z))
+  points.push(new Two.Vector(x + 1 * z, y + z))
+  points.push(new Two.Vector(x + 1.25 * z, y + 0.75 * z))
+  points.push(new Two.Vector(x + 2.25 * z, y + 0.75 * z))
+  points.push(new Two.Vector(x + 2 * z, y + z))
   points.push(new Two.Vector(x + 2.25 * z, y + 0.75 * z))
   points.push(new Two.Vector(x + 2.25 * z, y + 1.75 * z))
   points.push(new Two.Vector(x + 2 * z, y + 2 * z))
@@ -144,6 +150,17 @@ function makeDpadShadow(two) {
   points.push(new Two.Vector(x + 1.25 * z, y + 2.75 * z))
   points.push(new Two.Vector(x + 1.25 * z, y + 2 * z))
   points.push(new Two.Vector(x + 1 * z, y + 2 * z))
+
+  var dpadShadow = two.makePolygon(points, true);
+  dpadShadow.fill = "#c6a624";
+  dpadShadow.stroke = "#111111";
+  dpadShadow.linewidth = 4;
+
+  points.length = 0;
+  points.push(new Two.Vector(x - z, y + z))
+  points.push(new Two.Vector(x - 0.75 * z, y + 0.75 * z))
+  points.push(new Two.Vector(x, y + 0.75 * z))
+  points.push(new Two.Vector(x, y + z))
 
   var dpadShadow = two.makePolygon(points, true);
   dpadShadow.fill = "#c6a624";
@@ -169,7 +186,7 @@ function animateMouthBottom(two, mouthBottom) {
       rightEye = makeRightEye(two),
       mouthTop = makeMouthTop(two),
       mouthBottom = makeMouthBottom(two),
-      dpadShadow = makeDpadShadow(two),
+      dpadShadow = makeDpadShadow(two);
       dpad = makeDpad(two);
 
   animateMouthBottom(two, mouthBottom);
