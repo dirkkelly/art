@@ -192,8 +192,8 @@ function makeRightPort(two) {
 }
 
 function makeTriangleButton(two) {
-  var x = 300,
-      y = 380,
+  var x = 310,
+      y = 360,
       z = 20,
       points = [];
 
@@ -210,7 +210,7 @@ function makeTriangleButton(two) {
 }
 
 function makeBigCircleButton(two) {
-  var x = 300,
+  var x = 310,
       y = 490,
       z = 40;
 
@@ -222,9 +222,9 @@ function makeBigCircleButton(two) {
 }
 
 function makeSmallCircleButton(two) {
-  var x = 370,
-      y = 440,
-      z = 25;
+  var x = 375,
+      y = 425,
+      z = 30;
 
   var smallCircle = two.makeCircle(x, y, z);
   smallCircle.fill = "#66B73F";
