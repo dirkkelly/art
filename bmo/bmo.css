@@ -1,5 +1,5 @@
 body {
-  background: #999;
+  background: #FFFFFF;
 }
 
 div, span, li, i {
@@ -14,158 +14,57 @@ ol {
 
 #bmo {
   position: absolute;
-  left: 50%;
-  top: 50%;
-}
-
-#bmo {
+  left: 40px;
+  top: 40px;
   width: 450px;
   height: 600px;
-  margin-left: -225px;
-  margin-top: -300px;
 }
 
-#bmo.small {
-  width: 225px;
-  height: 300px;
-  margin-left: -112.5px;
-  margin-top: -150px;
+#quote {
+  position: absolute;
+  left: 520px;
+  top: 60px;
+  width: 600px;
+  background-color: #EFEFEF;
+  border: #111111 solid 3px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
 }
 
-#bmo .bordered {
-  border: 0.25em solid #111;
-}
-
-#bmo .rounded {
-  border-radius: 1em;
-}
-
-#bmo .body {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background-color: #336699;
-}
-
-#bmo .body .face {
-  position: relative;
-  width: 80%;
-  height: 40%;
-  margin-left: 10%;
-  margin-top: 10%;
-  background-color: #B3DDFF;
-  opacity: 0.6;
-}
-
-#bmo .body .face .eye {
+#quote:after {
+  content: "";
+  position: absolute;
+  top: 165px;
+  left: -15px;
+  border-style: solid;
+  border-width: 15px 15px 15px 0;
+  border-color: transparent #EFEFEF;
   display: block;
+  width: 0;
+  z-index: 1;
+}
+
+#quote:before {
+  content: "";
   position: absolute;
-  height: 6%;
-  width: 4%;
-  margin-top: 20%;
-  background-color: #111;
-  border-radius: 100%;
-}
-
-#bmo .body .face .eye.eye-left {
-  left: 20%;
-}
-
-#bmo .body .face .eye.eye-right {
-  right: 20%;
-}
-
-#bmo .body .face .mouth {
+  top: 163px;
+  left: -20px;
+  border-style: solid;
+  border-width: 17px 17px 17px 0;
+  border-color: transparent #111111;
   display: block;
-  position: absolute;
-  width: 20%;
-  left: 40%;
-  bottom: 20%;
-  border: 0.25em solid #111;
-  background: #FFF;
-  border-bottom-right-radius: 0.5em;
-  border-bottom-left-radius: 0.5em;
+  width: 0;
+  z-index: 0;
 }
 
-#bmo .body .face .mouth.mouth-open {
-  height: 10%;
-  background-color: white;
-  border-top: 0.5em solid #111;
+#quote p {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 10px 15px 15px;
+  font-family: "Courier New";
 }
 
-#bmo .body .belly {
-  position: absolute;
-  width: 80%;
-  height: 50%;
-  left: 10%;
-  top: 50%;
-}
-
-#bmo .body .belly .drive {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 60%;
-  height: 7%;
-  background-color: #20426a;
-  border-bottom-right-radius: 0.4em;
-  border-bottom-left-radius: 0.4em;
-  box-shadow: -2px -3px 0px #1a3454;
-}
-
-#bmo .body .belly .ejector {
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 6%;
-  height: 7%;
-  background-color: #1a3454;
-  border-radius: 100%;
-}
-
-#bmo .body .belly .d-pads {
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 30%;
-  width: 25%;
-  height: 25%;
-  list-style: none;
-}
-
-#bmo .body .belly .d-pads .d-pad {
-  position: absolute;
-  width: 45%;
-  height: 45%;
-  background-color: #F1E030;
-}
-
-#bmo .body .belly .d-pads .d-pad.top {
-  top: 0;
-  left: 25%;
-  border-top-left-radius: 0.2em;
-  border-top-right-radius: 0.2em;
-}
-
-#bmo .body .belly .d-pads .d-pad.right {
-  top: 25%;
-  left: 50%;
-  border-top-right-radius: 0.2em;
-  border-bottom-right-radius: 0.2em;
-}
-
-#bmo .body .belly .d-pads .d-pad.bottom {
-  top: 50%;
-  left: 25%;
-  border-bottom-left-radius: 0.2em;
-  border-bottom-right-radius: 0.2em;
-}
-
-#bmo .body .belly .d-pads .d-pad.left {
-  top: 25%;
-  left: 0;
-  border-top-left-radius: 0.2em;
-  border-bottom-left-radius: 0.2em;
+#quote p:last-child {
+  margin: 10px 15px;
 }
